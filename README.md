@@ -1,49 +1,52 @@
 # TicTacToe
+
 Traditional Tic Tac Toe game implented in Ruby
 
-Built With
+## Built With
 ​
 Ruby 2.6.5
 ​
-Getting Started
-​To get a local copy up and running follow these simple example steps.​ Git clone https:https://github.com/epinczinger/TicTacToe
+## Getting Started
 
-Usage
-​type ruby main.rb
+​To get a local copy up and running follow these simple example steps.​ 
+Git clone https://github.com/epinczinger/TicTacToe
 
-Functions
+## Functions
 
 To be added
-​
 
-Commands
+## Commands
+
 ruby main.rb
 
+## Authors
 
-Authors
-​bust_in_silhouette Author1 Esteban Pinczinger
+👤 **Esteban Pinczinger**
 
-Github: epinczinger
-Twitter: @epinczinger
-Linkedin: Esteban-Pinczinger
+- Github: [epinczinger](https://github.com/epinczinger)
+- Twitter: [@epinczinger](https://twitter.com/epinczinger)
+- Linkedin: [Esteban-Pinczinger](https://www.linkedin.com/in/esteban-pinczinger-busai-ab49a254/)
 
-bust_in_silhouette Author2 Giancarlo Dumani
+👤 **Giancarlo Dumani**
 
-Github: @gdumani
-Twitter: @gdumani1
-Linkedin: Giancarlo-Dumani
+- Github: [gdumani](https://github.com/gdumani)
+- Twitter: [@gdumani1](https://twitter.com/gdumani1)
+- Linkedin: [Giancarlo-Dumani](https://www.linkedin.com/in/giancarlo-dumani-a7364a1a1/?originalSubdomain=cr)
 
-�� Contributing
-​Contributions, issues and feature requests are welcome!​Feel free to check the issues page.​
+## 🤝 Contributing
 
-Show your support
-​Give a star if you like this project!​
+Contributions, issues and feature requests are welcome!
 
-Acknowledgments
+Feel free to check the [issues page](issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
 ​- This project was part of Microverse's curriculum in Ruby learning program
 
-Hat tip to anyone whose code was used
-Inspiration
-etc​
-�� License
-​This project has no licensed.
+## 📝 License
+
+​This project has no license.
