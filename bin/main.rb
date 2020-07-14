@@ -27,17 +27,17 @@ class Board
   end
 
   def turn(symb, loc)
-    if  @b[(loc - 1) / 3][(loc - 1) % 3] == "X" ||  @b[(loc - 1) / 3][(loc - 1) % 3] == "O"
-        puts "Invalid"
+    if @b[(loc - 1) / 3][(loc - 1) % 3] == 'X' || @b[(loc - 1) / 3][(loc - 1) % 3] == 'O'
+      puts 'Invalid'
     else
-    @b[(loc - 1) / 3][(loc - 1) % 3] = symb  
-    @counter -= 1
+      @b[(loc - 1) / 3][(loc - 1) % 3] = symb
+      @counter -= 1
     end
   end
 end
 
 puts '*********************************'.red
-puts '****'.red + '      TIC TAC TOE        '+'****'.red
+puts '****'.red + '      TIC TAC TOE        ' + '****'.red
 puts '*********************************'.red
 user = []
 user << User.new('X')
@@ -50,9 +50,8 @@ while board.counter.positive?
   current = board.counter % 2
   print "#{user[current].name} select the number of an empty box:"
   selected_number = gets.chomp.to_i
- 
+
   board.turn(user[current].symb, selected_number)
   puts '***********************************'
   board.display
-end 
-
+end
