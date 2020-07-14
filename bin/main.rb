@@ -26,14 +26,19 @@ class Board
     3.times { |i| p @b[i] }
   end
 
-  def turn(_symb, loc)
-    @b[(loc - 1) / 3][(loc - 1) % 3] = symb
+  def turn(symb, loc)
+    if  @b[(loc - 1) / 3][(loc - 1) % 3] == "X" ||  @b[(loc - 1) / 3][(loc - 1) % 3] == "O"
+        puts "Invalid"
+    else
+    @b[(loc - 1) / 3][(loc - 1) % 3] = symb  
+    @counter -= 1
+    end
   end
 end
 
-puts '*********************************'
-puts '****      TIC TAC TOE        ****'
-puts '*********************************'
+puts '*********************************'.red
+puts '****'.red + '      TIC TAC TOE        '+'****'.red
+puts '*********************************'.red
 user = []
 user << User.new('X')
 user << User.new('O')
@@ -42,11 +47,12 @@ board = Board.new
 board.display
 
 while board.counter.positive?
-  cu = board.counter % 2
-  print "#{user[cu].name} select the number of an empty box:"
-  n = gets.chomp.to_i
-  board.turn(user[cu].symb, n)
+  current = board.counter % 2
+  print "#{user[current].name} select the number of an empty box:"
+  selected_number = gets.chomp.to_i
+ 
+  board.turn(user[current].symb, selected_number)
   puts '***********************************'
   board.display
-  board.counter -= 1
-end
+end 
+
