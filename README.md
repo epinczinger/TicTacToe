@@ -11,9 +11,7 @@ Ruby 2.6.5
 ​To get a local copy up and running follow these simple example steps.​ 
 Git clone https://github.com/epinczinger/TicTacToe
 
-## Functions
-
-To be added
+gem install colorize
 
 ## Commands
 
@@ -49,4 +47,4 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-​This project has no license.
+​This project has MIT license.
