@@ -33,21 +33,20 @@ class Board
       puts 'Invalid choice, please try again'.red
     else
       @b[(loc - 1) / 3][(loc - 1) % 3] = symb
-        if is_winner(@b)
-            @counter = 0 
-            @symb = symb
-        end
+      if winner(@b)
+        @counter = 0
+        @symb = symb
+      end
       @counter -= 1
     end
   end
 
   private
 
-  def is_winner(testboard)
-  # to test winner change to true  
+  def winner(_testboard)
+    # to test winner change to true
     false
   end
-
 end
 
 puts '*********************************'.red
@@ -70,9 +69,9 @@ while board.counter.positive?
   board.display
 end
 
-if board.symb == ""
-    puts "It's a DRAW"
-else 
-    i = user.index {|x| x.symb==board.symb} 
-    puts "#{user[i].name} is the WINNER"
+if board.symb == ''
+  puts "It's a DRAW"
+else
+  i = user.index { |x| x.symb == board.symb }
+  puts "#{user[i].name} is the WINNER"
 end
