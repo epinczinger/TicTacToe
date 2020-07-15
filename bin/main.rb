@@ -29,11 +29,11 @@ class Board
   end
 
   def turn(symb, loc)
-    if @b[(loc - 1) / 3][(loc - 1) % 3] == 'X' || @b[(loc - 1) / 3][(loc - 1) % 3] == 'O' || #!(loc.to_s=~[1-9]) 
+    if !loc.to_s.match?(/[1-9]/) || loc.to_s.length != 1 || @b[(loc - 1) / 3][(loc - 1) % 3].match?(/[XO]/)
       puts 'Invalid choice, please try again'.red
     else
       @b[(loc - 1) / 3][(loc - 1) % 3] = symb
-        if @b.is_winner == true
+        if is_winner(@b)
             @counter = 0 
             @symb = symb
         end
@@ -41,7 +41,11 @@ class Board
     end
   end
 
-  def is_winner
+  private
+
+  def is_winner(testboard)
+  # to test winner change to true  
+    false
   end
 
 end
@@ -67,8 +71,8 @@ while board.counter.positive?
 end
 
 if board.symb == ""
-    print "It's a DRAW"
+    puts "It's a DRAW"
 else 
-    i = user.index {|x| x.symb=board.symb} 
-    print "#{user[i].name} is the WINNER"
+    i = user.index {|x| x.symb==board.symb} 
+    puts "#{user[i].name} is the WINNER"
 end
