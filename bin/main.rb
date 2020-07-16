@@ -4,16 +4,14 @@ require 'colorize'
 
 class User
   attr_reader :symb, :name
-  def initialize(symb)
-    print ' Write your name: '
-    @name = gets.chomp
+  def initialize(symb,name)
+    @name = name
     @symb = symb
-    puts "Welcome #{@name}. Your symbol to play is #{@symb}"
   end
 end
 
 class Board
-  attr_reader :symb, :counter
+  attr_reader :symb, :counter, :status, :b
 
   def initialize
     @b = Array.new(3) { |i| Array.new(3) { |j| ((i * 3 + j + 1)).to_s } }
@@ -21,14 +19,11 @@ class Board
     @symb = ''
   end
 
-  def display
-    3.times { |i| p @b[i] }
-  end
-
   def turn(symb, loc)
     if !loc.to_s.match?(/[1-9]/) || loc.to_s.length != 1 || @b[(loc - 1) / 3][(loc - 1) % 3].match?(/[XO]/)
-      puts 'Invalid choice, please try again'.red
+      @status = false
     else
+      @status = true
       @b[(loc - 1) / 3][(loc - 1) % 3] = symb
       if winner(@b)
         @counter = 0
@@ -42,45 +37,40 @@ class Board
 
   def winner(test)
     trans = test.transpose
-    win = false
-
-    win = true if (0...test.size).collect { |i| test[i][i] }.uniq.count == 1
-    win = true if (0...test.size).collect { |i| test[test.size - i - 1][i] }.uniq.count == 1
-    win = true if test.map { |x| x.uniq.count }.include?(1)
-    win = true if trans.map { |x| x.uniq.count }.include?(1)
-
-    # An alternative less readable way following DRY rules
-    #   if (0...test.size).collect { |i| test[i][i] }.uniq.count == 1 ||
-    #      (0...test.size).collect { |i| test[test.size - i - 1][i] }.uniq.count == 1 ||
-    #      test.map { |x| x.uniq.count }.include?(1) ||
-    #      trans.map { |x| x.uniq.count }.include?(1)
-    #     true
-    #   else
-    #     false
-    #   end
-    # end
-    win
+    (0...test.size).collect { |i| test[i][i] }.uniq.count == 1 ||
+    (0...test.size).collect { |i| test[test.size - i - 1][i] }.uniq.count == 1 ||
+    test.map { |x| x.uniq.count }.include?(1) ||
+    trans.map { |x| x.uniq.count }.include?(1)
   end
+
 end
 
 puts '*********************************'.red
 puts '****'.red + '      TIC TAC TOE        ' + '****'.red
 puts '*********************************'.red
 user = []
-user << User.new('X')
-user << User.new('O')
+userSymbols=["X","O"]
+2.times do |i|
+  print "User #{i+1}: Please write your name: "
+  name=gets.chomp
+  user << User.new(userSymbols[i],name)
+  puts "Welcome #{user[i].name.yellow}. your symbol is #{user[i].symb.yellow}."
+end
+
 
 board = Board.new
-board.display
+3.times { |i| p board.b[i] }
 
 while board.counter.positive?
   current = (board.counter + 1) % 2
-  puts "It's your turn #{user[current].name.yellow}!\nPlease select the number of an empty box:"
+  print "It's your turn #{user[current].name.yellow}!\nPlease select the number of an empty box to put an #{user[current].symb.yellow}:"
   selected_number = gets.chomp.to_i
 
   board.turn(user[current].symb, selected_number)
+  puts "\n***********************************"
+  puts "Invalid choice, Try again!".red if !board.status
   puts '***********************************'
-  board.display
+  3.times { |i| p board.b[i] }
 end
 
 if board.symb == ''
