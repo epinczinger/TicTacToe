@@ -6,12 +6,16 @@ Traditional Tic Tac Toe game implented in Ruby
 ​
 Ruby 2.6.5
 ​
+## Requirements
+
+To display colors install the 'colorize' GEM
+
+gem install colorize
+
 ## Getting Started
 
 ​To get a local copy up and running follow these simple example steps.​ 
 Git clone https://github.com/epinczinger/TicTacToe
-
-gem install colorize
 
 ## Commands
 
