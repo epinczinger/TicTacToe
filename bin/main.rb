@@ -18,8 +18,7 @@ class Board
   attr_reader :symb
 
   def initialize
-    # @b=Array.new(3) {|i| i=Array.new(3){|j| j=" "}}
-    @b = [%w[1 2 3], %w[4 5 6], %w[7 8 9]]
+    @b = Array.new(3) { |i| Array.new(3) { |j| ((i * 3 + j + 1)).to_s } }
     @counter = 9
     @symb = ''
   end
@@ -60,7 +59,7 @@ board = Board.new
 board.display
 
 while board.counter.positive?
-  current = board.counter % 2
+  current = (board.counter + 1) % 2
   puts "It's your turn #{user[current].name.yellow}!\nPlease select the number of an empty box:"
   selected_number = gets.chomp.to_i
 
@@ -70,8 +69,8 @@ while board.counter.positive?
 end
 
 if board.symb == ''
-  puts "It's a DRAW"
+  puts "It's a DRAW".green
 else
   i = user.index { |x| x.symb == board.symb }
-  puts "#{user[i].name} is the WINNER"
+  puts "#{user[i].name} is the WINNER".green
 end
