@@ -3,7 +3,7 @@
 require 'colorize'
 
 class User
-  attr_reader :symb , :name
+  attr_reader :symb, :name
   def initialize(symb)
     print ' Write your name: '
     @name = gets.chomp
@@ -13,7 +13,7 @@ class User
 end
 
 class Board
-  attr_reader :symb , :counter
+  attr_reader :symb, :counter
 
   def initialize
     @b = Array.new(3) { |i| Array.new(3) { |j| ((i * 3 + j + 1)).to_s } }
@@ -40,25 +40,29 @@ class Board
 
   private
 
+  # rubocop:disable Metrics/CyclomaticComplexity
   def winner(test)
-    
-   trans = test.transpose
-    
-  #  win = true if (0...test.size).collect {|i| test[i][i]}.uniq.count == 1 ||
-  #  win = true if (0...test.size).collect {|i| test[test.size-i-1][i]}.uniq.count == 1
-   
-  # win=true if test.map {|x| x.uniq.count}.include?(1) 
-  # win=true if trans.map {|x| x.uniq.count}.include?(1)
+    trans = test.transpose
+    win = false
 
-    if ( (0...test.size).collect {|i| test[i][i]}.uniq.count == 1 ||
-    (0...test.size).collect {|i| test[test.size-i-1][i]}.uniq.count == 1 ||
-    test.map {|x| x.uniq.count}.include?(1)  ||
-    trans.map {|x| x.uniq.count}.include?(1)  )
-      return true
-    else
-      false
-    end
+    win = true if (0...test.size).collect { |i| test[i][i] }.uniq.count == 1
+    win = true if (0...test.size).collect { |i| test[test.size - i - 1][i] }.uniq.count == 1
+    win = true if test.map { |x| x.uniq.count }.include?(1)
+    win = true if trans.map { |x| x.uniq.count }.include?(1)
+
+    # An alternative less readable way following DRY rules
+    #   if (0...test.size).collect { |i| test[i][i] }.uniq.count == 1 ||
+    #      (0...test.size).collect { |i| test[test.size - i - 1][i] }.uniq.count == 1 ||
+    #      test.map { |x| x.uniq.count }.include?(1) ||
+    #      trans.map { |x| x.uniq.count }.include?(1)
+    #     true
+    #   else
+    #     false
+    #   end
+    # end
+    win
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
 end
 
 puts '*********************************'.red
