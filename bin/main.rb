@@ -3,8 +3,7 @@
 require 'colorize'
 
 class User
-  attr_accessor :name
-  attr_reader :symb
+  attr_reader :symb , :name
   def initialize(symb)
     print ' Write your name: '
     @name = gets.chomp
@@ -14,8 +13,7 @@ class User
 end
 
 class Board
-  attr_accessor :counter
-  attr_reader :symb
+  attr_reader :symb , :counter
 
   def initialize
     @b = Array.new(3) { |i| Array.new(3) { |j| ((i * 3 + j + 1)).to_s } }
