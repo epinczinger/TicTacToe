@@ -40,7 +40,6 @@ class Board
 
   private
 
-  # rubocop:disable Metrics/CyclomaticComplexity
   def winner(test)
     trans = test.transpose
     win = false
@@ -62,7 +61,6 @@ class Board
     # end
     win
   end
-  # rubocop:enable Metrics/CyclomaticComplexity
 end
 
 puts '*********************************'.red
