@@ -40,9 +40,24 @@ class Board
 
   private
 
-  def winner(_testboard)
-    # to test winner change to true
-    false
+  def winner(test)
+    
+   trans = test.transpose
+    
+  #  win = true if (0...test.size).collect {|i| test[i][i]}.uniq.count == 1 ||
+  #  win = true if (0...test.size).collect {|i| test[test.size-i-1][i]}.uniq.count == 1
+   
+  # win=true if test.map {|x| x.uniq.count}.include?(1) 
+  # win=true if trans.map {|x| x.uniq.count}.include?(1)
+
+    if ( (0...test.size).collect {|i| test[i][i]}.uniq.count == 1 ||
+    (0...test.size).collect {|i| test[test.size-i-1][i]}.uniq.count == 1 ||
+    test.map {|x| x.uniq.count}.include?(1)  ||
+    trans.map {|x| x.uniq.count}.include?(1)  )
+      return true
+    else
+      false
+    end
   end
 end
 
