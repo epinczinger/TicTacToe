@@ -4,7 +4,7 @@ require 'colorize'
 
 class User
   attr_reader :symb, :name
-  def initialize(symb,name)
+  def initialize(symb, name)
     @name = name
     @symb = symb
   end
@@ -38,37 +38,36 @@ class Board
   def winner(test)
     trans = test.transpose
     (0...test.size).collect { |i| test[i][i] }.uniq.count == 1 ||
-    (0...test.size).collect { |i| test[test.size - i - 1][i] }.uniq.count == 1 ||
-    test.map { |x| x.uniq.count }.include?(1) ||
-    trans.map { |x| x.uniq.count }.include?(1)
+      (0...test.size).collect { |i| test[test.size - i - 1][i] }.uniq.count == 1 ||
+      test.map { |x| x.uniq.count }.include?(1) ||
+      trans.map { |x| x.uniq.count }.include?(1)
   end
-
 end
 
 puts '*********************************'.red
 puts '****'.red + '      TIC TAC TOE        ' + '****'.red
 puts '*********************************'.red
 user = []
-userSymbols=["X","O"]
+user_symbols = %w[X O]
 2.times do |i|
-  print "User #{i+1}: Please write your name: "
-  name=gets.chomp
-  user << User.new(userSymbols[i],name)
+  print "User #{i + 1}: Please write your name: "
+  name = gets.chomp
+  user << User.new(user_symbols[i], name)
   puts "Welcome #{user[i].name.yellow}. your symbol is #{user[i].symb.yellow}."
 end
-
 
 board = Board.new
 3.times { |i| p board.b[i] }
 
 while board.counter.positive?
   current = (board.counter + 1) % 2
-  print "It's your turn #{user[current].name.yellow}!\nPlease select the number of an empty box to put an #{user[current].symb.yellow}:"
+  puts "It's your turn #{user[current].name.yellow}!"
+  print "Please select the number of an empty box to put an #{user[current].symb.yellow}:"
   selected_number = gets.chomp.to_i
 
   board.turn(user[current].symb, selected_number)
   puts "\n***********************************"
-  puts "Invalid choice, Try again!".red if !board.status
+  puts 'Invalid choice, Try again!'.red unless board.status
   puts '***********************************'
   3.times { |i| p board.b[i] }
 end
