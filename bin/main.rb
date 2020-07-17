@@ -16,7 +16,6 @@ board = Board.new
   puts "Welcome #{user[i].name.yellow}. your symbol is #{user[i].symb.yellow}."
 end
 
-
 3.times { |i| p board.b[i] }
 
 while board.counter.positive?

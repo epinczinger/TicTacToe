@@ -5,7 +5,7 @@ class Board
     @b = Array.new(3) { |i| Array.new(3) { |j| ((i * 3 + j + 1)).to_s } }
     @counter = 9
     @symb = ''
-    @symbols=%w[X O]
+    @symbols = %w[X O]
   end
 
   def turn(symb, loc)
