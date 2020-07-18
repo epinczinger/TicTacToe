@@ -16,19 +16,18 @@ board = Board.new
   puts "Welcome #{user[i].name.yellow}. your symbol is #{user[i].symb.yellow}."
 end
 
-3.times { |i| p board.b[i] }
+puts board.display
 
 while board.counter.positive?
-  current = (board.counter + 1) % 2
-  puts "It's your turn #{user[current].name.yellow}!"
-  print "Please select the number of an empty box to put an #{user[current].symb.yellow}:"
+  puts "It's your turn #{user[board.current].name.yellow}!"
+  print "Please select the number of an empty box to put an #{user[board.current].symb.yellow}:"
   selected_number = gets.chomp.to_i
 
-  board.turn(user[current].symb, selected_number)
+  board.turn(user[board.current].symb, selected_number)
   puts "\n***********************************"
   puts 'Invalid choice, Try again!'.red unless board.status
   puts '***********************************'
-  3.times { |i| p board.b[i] }
+  puts board.display
 end
 
 if board.symb == ''
