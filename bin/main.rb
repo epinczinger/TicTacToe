@@ -30,7 +30,7 @@ while board.counter.positive?
   puts board.display
 end
 
-if board.symb == ''
+if !board.symb
   puts "It's a DRAW".green
 else
   i = user.index { |x| x.symb == board.symb }
