@@ -29,7 +29,7 @@ class Board
   end
 
   def display
-    b.map {|i| i.join("|")}
+    b.map { |i| i.join('|') }
   end
 
   private
