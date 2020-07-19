@@ -37,7 +37,7 @@ If none of the players matches that condition, the game will be declared a draw.
 
 ## Screenshot
 
-![screenshot](/images/screenshot.jpeg)
+![screenshot](/images/screenshot2.png)
 
 ## Authors
 
