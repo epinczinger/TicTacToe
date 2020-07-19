@@ -23,16 +23,16 @@ while board.counter.positive?
   print "Please select the number of an empty box to put an #{user[board.current].symb.yellow}:"
   selected_number = gets.chomp.to_i
 
-  board.turn(user[board.current].symb, selected_number)
   puts "\n***********************************"
-  puts 'Invalid choice, Try again!'.red unless board.status
+  puts 'Invalid choice, Try again!'.red unless board.turn(user[board.current].symb, selected_number)
   puts '***********************************'
   puts board.display
 end
 
-if !board.symb
+if board.symb == ''
   puts "It's a DRAW".green
 else
+  puts board.symb.green + '!!!!'.green
   i = user.index { |x| x.symb == board.symb }
   puts "#{user[i].name} is the WINNER".green
 end
