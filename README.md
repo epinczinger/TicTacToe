@@ -45,7 +45,7 @@ If none of the players matches that condition, the game will be declared a draw.
 
 - Github: [epinczinger](https://github.com/epinczinger)
 - Twitter: [@epinczinger](https://twitter.com/epinczinger)
-- Linkedin: [Esteban-Pinczinger](https://www.linkedin.com/in/esteban-pinczinger-busai-ab49a254/)
+- Linkedin: [Esteban-Pinczinger](https://www.linkedin.com/in/esteban-pinczinger/)
 
 👤 **Giancarlo Dumani**
 
