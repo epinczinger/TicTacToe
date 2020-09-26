@@ -4,11 +4,15 @@ require 'colorize'
 require_relative '../lib/user.rb'
 require_relative '../lib/board.rb'
 
+
+
 puts '*********************************'.red
 puts '****'.red + '      TIC TAC TOE        ' + '****'.red
 puts '*********************************'.red
 user = []
 board = Board.new
+
+puts board.winner([[1,2,3],["X","X","X"],[7, 8, 9]])
 2.times do |i|
   print "User #{i + 1}: Please write your name: "
   name = gets.chomp
@@ -36,3 +40,6 @@ else
   i = user.index { |x| x.symb == board.symb }
   puts "#{user[i].name} is the WINNER".green
 end
+
+
+puts board.winner([[1,2,3],["X","X","X"],[7, 8, 9]])
