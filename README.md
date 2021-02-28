@@ -1,6 +1,6 @@
 # TicTacToe
 
-Traditional Tic Tac Toe game implented in Ruby
+Traditional Tic Tac Toe game implemented in Ruby
 
 ## Built With
 ​
